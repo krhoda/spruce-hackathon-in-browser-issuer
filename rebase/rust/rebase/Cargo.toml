@@ -1,0 +1,34 @@
+[package]
+name = "rebase"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-trait = "0.1.53"
+base58 = "0.2.0"
+chrono = { version = "0.4", features = ["serde", "wasmbind"] }
+# did-web = "0.1.2"
+did-web = { path = "../../../ssi/did-web", default-features = false}
+ed25519-dalek = "1" 
+
+hex = "0.3"
+k256 = { version = "0.9", default-features = false, features = ["std", "ecdsa", "keccak256"] }
+
+regex = "1"
+reqwest = { version = "0.11.11", features = ["json"] }
+
+schemars = "0.8"
+serde = "1"
+serde_json = "1"
+sha3 = "0.9"
+ssi = { path = "../../../ssi", default-features = false, features = ["ed25519-dalek", "sha", "secp256k1", "secp256r1"] }
+
+thiserror = "1"
+
+url = "2.2"
+uuid = { version = "0.8", features = ["serde", "v4", "stdweb"] }
+
+[dev-dependencies]
+tokio = {version = "1", features = ["full", "macros"]}
