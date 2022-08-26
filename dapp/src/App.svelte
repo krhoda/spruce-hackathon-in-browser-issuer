@@ -1,18 +1,12 @@
 <script lang="ts">
 	import { Router, Route } from "svelte-navigator";
-	import { Account, Explainer, Witness } from "routes";
+	import { Form } from "routes";
 	
 </script>
 
 <Router>
 	<Route path="/">
-		<Explainer />
-	</Route>
-	<Route path="account" let:location>
-		<Account {location} />
-	</Route>
-	<Route path="create/witness/:type" let:params>
-		<Witness type={params.type} />
+		<Form />
 	</Route>
 </Router>
 

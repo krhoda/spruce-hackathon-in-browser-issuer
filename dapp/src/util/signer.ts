@@ -4,7 +4,8 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import { signer } from "./store";
 
 export type SignerType = "ethereum" | "solana"; // | "tezos" | "solana" | "etc"
-export const signerTypes: Array<SignerType> = ["ethereum", "solana"];
+// export const signerTypes: Array<SignerType> = ["ethereum", "solana"];
+export const signerTypes: Array<SignerType> = ["solana"];
 
 export type ProviderType = EthereumProvider | SolanaProvider;
 export type EthereumProvider = "metamask" | "wallet-connect";
