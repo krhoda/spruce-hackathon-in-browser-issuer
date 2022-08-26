@@ -87,15 +87,20 @@ pub fn self_issue(stringified_key_type: &str, stringified_schema: &str) -> Promi
     })
 }
 
+#[inline(always)]
+fn url_safe_trailing_bits() -> base64::Config {
+    base64::URL_SAFE_NO_PAD.decode_allow_trailing_bits(true)
+}
+
 #[wasm_bindgen]
 pub fn solana_jwk(solana_addr: &str) -> Result<String, JsValue> {
     match solana_addr.from_base58() {
-        Ok(_) => Ok(jserr!(serde_json::to_string(&serde_json::json!({
-            "alg":"EdBlake2b",
+        Ok(b) => Ok(jserr!(serde_json::to_string(&serde_json::json!({
             "kty": "OKP",
             "crv": "Ed25519",
-            "x": solana_addr
+            "x": base64::encode_config(b, url_safe_trailing_bits())  
         })))),
         Err(e) => Err(JsValue::from_str(&b58_err(e))),
     }
+
 }
